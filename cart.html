@@ -90,7 +90,10 @@
 
         function processCheckout() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if (cart.length === 0) return;
+            if (cart.length === 0) {
+                alert("Your shopping bag is empty.");
+                return;
+            }
             
             let total = 0;
             let itemList = "";
@@ -102,14 +105,19 @@
 
             const method = document.getElementById('payment-method').value;
             const orderID = "VLT-" + Math.floor(Math.random() * 1000000);
-            const phoneNumber = "+966541446858"; 
+            const phoneNumber = "201554030606"; // Handled without '+' symbols for precise API standard linking
             
             const message = `*VOLTY ORDER SYSTEM*%0A*ID:* ${orderID}%0A%0A*ITEMS:*%0A${itemList}%0A*TOTAL:* EGP ${total}%0A*PAYMENT:* ${method}`;
             
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            // Clean global window routing execution path
+            const orderUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+            window.open(orderUrl, '_blank');
         }
 
-        displayCart();
+        // Initialize display
+        document.addEventListener('DOMContentLoaded', () => {
+            displayCart();
+        });
     </script>
 </body>
 </html>
