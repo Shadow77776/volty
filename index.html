@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLTY | Luxury Clothing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <h1 class="welcome-logo">VOLTY</h1>
+            <div class="welcome-line"></div>
+            <p class="welcome-subtitle">EST. 2026</p>
+        </div>
+    </div>
+
+    <div class="header">
+        <img src="images/logo.png" alt="VOLTY Logo">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="contact.html">contact</a></li> 
+            <li><a href="cart.html">cart</a></li>    
+        </ul>
+    </div>
+
+    <div class="content-box" style="text-align: center; padding: 80px 20px;">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(40px, 8vw, 60px); color: var(--dark-green);">The 2026 Collection</h1>
+        <p style="letter-spacing: 6px; text-transform: uppercase; font-size: 11px; margin-top: 15px; opacity: 0.8;">Timeless Elegance & Modern Sophistication</p>
+    </div>
+
+    <div class="products-grid">
+        
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden; border-radius: 2px;">
+                <img src="images/product1.png" alt="Linen Shirt" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Signature Linen Shirt</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 1,200</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product1">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Signature Linen Shirt', 1200, 'size-product1')">Add to Bag</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden;">
+                <img src="images/product2.png" alt="Oversized Tee" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Luxury Oversized Tee</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 850</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product2">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Luxury Oversized Tee', 850, 'size-product2')">Add to Bag</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden;">
+                <img src="images/product3.png" alt="Tailored Trousers" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Tailored Trousers</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 1,800</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product3">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Tailored Trousers', 1800, 'size-product3')">Add to Bag</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden;">
+                <img src="images/product4.png" alt="Velvet Hoodie" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Premium Velvet Hoodie</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 2,100</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product4">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Premium Velvet Hoodie', 2100, 'size-product4')">Add to Bag</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden;">
+                <img src="images/product5.png" alt="Silk Polo" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Knit Silk Polo</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 1,450</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product5">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Knit Silk Polo', 1450, 'size-product5')">Add to Bag</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-container" style="overflow: hidden;">
+                <img src="images/product6.png" alt="Summer Shorts" style="width: 100%; transition: transform 0.6s ease;">
+            </div>
+            <h3 style="margin-top: 20px; font-size: 18px;">Volty Summer Shorts</h3>
+            <p style="color: var(--gold-hover); font-weight: 600; margin-bottom: 15px;">EGP 900</p>
+            
+            <div class="size-selector-container">
+                <select class="luxury-size-select" id="size-product6">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="X-Large">X-Large</option>
+                    <option value="XX-Large">XX-Large</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="addToCart('Volty Summer Shorts', 900, 'size-product6')">Add to Bag</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 VOLTY Luxury Clothing Brand. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        // Splash Screen Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            setTimeout(() => {
+                welcomeScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    welcomeScreen.style.display = 'none';
+                }, 1000); 
+            }, 2500);
+        });
+
+        // Shopping Bag Logic
+        function addToCart(name, price, sizeSelectId) {
+            const selectedSize = document.getElementById(sizeSelectId).value;
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: name, price: price, size: selectedSize });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Visual feedback instead of annoying alert
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = `ADDED [${selectedSize.toUpperCase()}] TO BAG`;
+            btn.style.backgroundColor = "#E2C799";
+            btn.style.color = "#1D4F33";
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = "";
+                btn.style.color = "";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

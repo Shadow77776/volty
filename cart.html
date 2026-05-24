@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Selection | VOLTY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="VOLTY">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="contact.html">contact</a></li> 
+            <li><a href="cart.html" style="background-color: var(--dark-green); color: var(--cream);">cart</a></li>    
+        </ul>
+    </div>
+
+    <div class="cart-wrapper">
+        <div class="luxury-cart-container">
+            <div class="cart-header">
+                <h1 class="cart-title">Your Selection</h1>
+                <p class="cart-subtitle">VOLTY ORDERING SYSTEM</p>
+            </div>
+
+            <div id="cart-items-list" class="cart-items-area"></div>
+
+            <div class="cart-footer">
+                <div id="total-price" class="total-display">Total: EGP 0</div>
+
+                <div class="checkout-controls">
+                    <label class="input-label">Payment Gateway</label>
+                    <select id="payment-method" class="modern-select">
+                        <option value="InstaPay">InstaPay</option>
+                        <option value="Vodafone Cash">Vodafone Cash</option>
+                        <option value="Credit Card">Credit / Debit Card</option>
+                    </select>
+
+                    <button class="btn primary-btn" onclick="processCheckout()">Generate System Order</button>
+                    
+                    <div class="utility-links">
+                        <button class="clear-btn" onclick="clearCart()">Empty Memory</button>
+                        <a href="index.html" class="back-link">← Back to Shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 VOLTY Luxury Clothing Brand. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let listDiv = document.getElementById('cart-items-list');
+            let totalDiv = document.getElementById('total-price');
+            let total = 0;
+
+            if (cart.length === 0) {
+                listDiv.innerHTML = `
+                    <div class="empty-state">
+                        <p>System: Shopping bag is empty.</p>
+                    </div>`;
+                totalDiv.style.display = "none";
+                return;
+            }
+
+            totalDiv.style.display = "block";
+            listDiv.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                const sizeLabel = item.size ? ` (${item.size})` : '';
+                return `
+                    <div class="cart-item">
+                        <span class="item-name">${item.name}${sizeLabel}</span>
+                        <span class="item-price">EGP ${item.price}</span>
+                    </div>`;
+            }).join('');
+            totalDiv.innerHTML = `Total: EGP ${total.toLocaleString()}`;
+        }
+
+        function clearCart() {
+            if(confirm("Confirm: Clear all items from memory?")) {
+                localStorage.removeItem('cart');
+                displayCart();
+            }
+        }
+
+        function processCheckout() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) return;
+            
+            let total = 0;
+            let itemList = "";
+            cart.forEach((item, i) => { 
+                const sizeDetail = item.size ? ` [Size: ${item.size}]` : '';
+                itemList += `${i+1}. ${item.name}${sizeDetail} | EGP ${item.price}%0A`; 
+                total += item.price; 
+            });
+
+            const method = document.getElementById('payment-method').value;
+            const orderID = "VLT-" + Math.floor(Math.random() * 1000000);
+            const phoneNumber = "+966541446858"; 
+            
+            const message = `*VOLTY ORDER SYSTEM*%0A*ID:* ${orderID}%0A%0A*ITEMS:*%0A${itemList}%0A*TOTAL:* EGP ${total}%0A*PAYMENT:* ${method}`;
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+
+        displayCart();
+    </script>
+</body>
+</html>
