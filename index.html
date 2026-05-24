@@ -50,7 +50,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Signature Linen Shirt', 1200, 'size-product1')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Signature Linen Shirt', 1200, 'size-product1')">Add to Bag</button>
         </div>
 
         <div class="product-card">
@@ -70,7 +70,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Luxury Oversized Tee', 850, 'size-product2')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Luxury Oversized Tee', 850, 'size-product2')">Add to Bag</button>
         </div>
 
         <div class="product-card">
@@ -90,7 +90,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Tailored Trousers', 1800, 'size-product3')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Tailored Trousers', 1800, 'size-product3')">Add to Bag</button>
         </div>
 
         <div class="product-card">
@@ -110,7 +110,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Premium Velvet Hoodie', 2100, 'size-product4')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Premium Velvet Hoodie', 2100, 'size-product4')">Add to Bag</button>
         </div>
 
         <div class="product-card">
@@ -130,7 +130,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Knit Silk Polo', 1450, 'size-product5')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Knit Silk Polo', 1450, 'size-product5')">Add to Bag</button>
         </div>
 
         <div class="product-card">
@@ -150,7 +150,7 @@
                 </select>
             </div>
             
-            <button class="btn" onclick="addToCart('Volty Summer Shorts', 900, 'size-product6')">Add to Bag</button>
+            <button class="btn" onclick="addToCart(this, 'Volty Summer Shorts', 900, 'size-product6')">Add to Bag</button>
         </div>
 
     </div>
@@ -171,24 +171,23 @@
             }, 2500);
         });
 
-        // Shopping Bag Logic
-        function addToCart(name, price, sizeSelectId) {
+        // Shopping Bag Logic with button reference security fixed
+        function addToCart(btnElement, name, price, sizeSelectId) {
             const selectedSize = document.getElementById(sizeSelectId).value;
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push({ name: name, price: price, size: selectedSize });
             localStorage.setItem('cart', JSON.stringify(cart));
             
-            // Visual feedback instead of annoying alert
-            const btn = event.target;
-            const originalText = btn.innerText;
-            btn.innerText = `ADDED [${selectedSize.toUpperCase()}] TO BAG`;
-            btn.style.backgroundColor = "#E2C799";
-            btn.style.color = "#1D4F33";
+            // Visual feedback securely using passed element reference
+            const originalText = btnElement.innerText;
+            btnElement.innerText = `ADDED [${selectedSize.toUpperCase()}] TO BAG`;
+            btnElement.style.backgroundColor = "#E2C799";
+            btnElement.style.color = "#1D4F33";
             
             setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.backgroundColor = "";
-                btn.style.color = "";
+                btnElement.innerText = originalText;
+                btnElement.style.backgroundColor = "";
+                btnElement.style.color = "";
             }, 2000);
         }
     </script>
